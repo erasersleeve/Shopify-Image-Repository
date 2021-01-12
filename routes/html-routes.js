@@ -25,14 +25,14 @@ module.exports = function (app) {
 	//Get all assignments
 	app.get("/gallery", isAuthenticated, function (req, res) {
 
-		db.Assignment.findAll({ raw: true })
-			.then(function (assignmentData) {
+		db.Image.findAll({ raw: true })
+			.then(function (imageData) {
 
-				// console.log(assignmentData);
+				
 
 				// Create JSON with data from terminal and pass through in res.render
 
-				res.render("gallery", { Assignments: assignmentData });
+				res.render("gallery", { Images: imageData });
 			});
 	});
 
