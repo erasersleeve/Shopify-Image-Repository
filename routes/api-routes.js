@@ -78,7 +78,44 @@ module.exports = function (app) {
     });
   });
 
-  
+  app.post("/api/createImage", function (req, res) {
+    console.log(req.body)
+    console.log("---------------------------------------added image--------------------------------------------");
+    if (req.body.title.length !== 0) {
+      db.Image.create({
+        title: req.body.title,
+        description: req.body.description,
+        subject: req.body.subject
+      }).then(function (results) {
+        res.end();
+      })
+    }
+  });
+
+  app.put("/api/images/:id", function (req, res) {
+    console.log(req.params.id)
+    console.log(req)
+    db.Image.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(function (dbImage) {
+        res.json(dbImage);
+      });
+  });
+
+  app.delete("/api/images/:id", function (req, res) {
+    db.Image.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbImage) {
+      res.json(dbImage);
+    });
+  });
+
 
 
 };

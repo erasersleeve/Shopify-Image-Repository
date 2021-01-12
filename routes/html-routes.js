@@ -36,45 +36,6 @@ module.exports = function (app) {
 			});
 	});
 
-	// View class grades for a single assignment
-	app.get("/assignments/:id", isAuthenticated, function (req, res) {
-
-		db.Student.findAll({
-			raw: true,
-			include: [db.Grade],
-			where: {
-				UserId: req.user.id
-			}
-		}).then(function (studentData) {
-			console.log(studentData)
-
-			// If there are no students, then shows the page, else it will pull up the page with the student data
-			if (studentData.length === 0) {
-				res.render("soloAssignment");
-			} else {
-				let assignmentData = [];
-				let studentIdArr = [];
-				let studentId = 0;
-
-				for (let i = 0; i < studentData.length; i++) {
-					// console.log(req.params.id)
-					// console.log(studentData[i]["Grades.AssignmentId"])
-					// console.log(studentData[i]["Grades.AssignmentId"] == req.params.id)
-
-					if ((studentData[i]["Grades.AssignmentId"] == req.params.id || studentData[i]["Grades.AssignmentId"] === null) &&
-						studentIdArr.includes(studentData[i].id) === false) {
-						assignmentData.push(studentData[i]);
-						studentIdArr.push(studentData[i].id);
-					}
-				}
-				console.log(assignmentData)
-				console.log(studentIdArr);
-
-				res.render("soloAssignment", { grades: assignmentData });
-			}
-		})
-	});
-
 
 	// Create Account
 	app.get("/createAccount", function (req, res) {
