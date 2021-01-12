@@ -1,0 +1,1 @@
+This is an image repository create to answer the Shopify internship challenge.
