@@ -1,0 +1,8 @@
+.env
+node_modules
+package-loc.json
+.DS_Store
+homework_instructions.md
+employee-tracker.gif
+schema.png
+._*

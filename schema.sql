@@ -1,0 +1,4 @@
+
+DROP DATABASE IF EXISTS image_repoDB;
+
+CREATE DATABASE image_repoDB;

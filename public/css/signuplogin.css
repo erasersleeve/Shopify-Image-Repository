@@ -1,0 +1,15 @@
+.register-signin-wrapper {
+    width: 50%;
+    padding-top: 60px;
+    margin-top: 150px;
+    background: #f7f6f6;
+}
+
+h2 {
+    color: #975daf;
+    margin-top: 20px;
+}
+
+.smalltext {
+    font-size: 0.8em;
+}
